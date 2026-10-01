@@ -1,0 +1,181 @@
+\documentclass[reqno,11pt]{amsart}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{enumerate}
+\usepackage{fullpage}
+\usepackage[usenames,dvipsnames]{color}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+\begin{document}
+\begin{flushright} (Robert Kohn) \end{flushright}
+\begin{flushright} (4/20/26)\end{flushright}
+\vspace{0.2in}
+\begin{center}
+{\bf Portfolio Problems for Test 3}
+\vspace{0.2in}
+\end{center}
+
+\noindent \textbf{Exercise 6.2.10}
+
+Let $[a,b] \subset \mathbb{R}$ be a closed interval, and let $\{f_n\}$ be a sequence of functions on $[a,b]$ such that $f_n(x) \to f(x)$ pointwise on $[a,b]$, each $f_n$ is increasing on $[a,b]$, and the limit function $f$ is continuous on $[a,b]$. Prove that $f_n \to f$ uniformly on $[a,b]$.
+
+\noindent\textbf{Proof.}
+
+Let $\varepsilon > 0$ be given.
+
+Because $f$ is continuous on a closed interval, it is uniformly continuous. So we can pick $\delta > 0$ such that
+\[
+|x - x'| < \delta \;\Rightarrow\; |f(x) - f(x')| < \frac{\varepsilon}{3}.
+\]
+
+Choose a partition \(a = x_0 < x_1 < x_2 < \dots < x_m = b\) so that each subinterval has length \(\le \delta\).
+
+At each point \(x_i\) the sequence converges: \(f_n(x_i) \to f(x_i)\). Hence we can find \(N_i\) so that for all \(n \ge N_i\),
+\[
+|f_n(x_i) - f(x_i)| < \frac{\varepsilon}{3}.
+\]
+Let \(N = \max\{N_0, N_1, \dots, N_m\}\).
+
+Take any \(x \in [a,b]\). Then \(x\) lies in some subinterval \([x_{i-1}, x_i]\).
+
+Since each \(f_n\) is increasing, \(f_n(x_{i-1}) \le f_n(x) \le f_n(x_i)\).  
+Thus,
+\[
+|f_n(x) - f(x_i)| \le |f_n(x_{i-1}) - f_n(x_i)|.
+\]  
+
+Then we can bound $|f_n(x) - f(x)|$ using the triangle inequality:
+\[
+\begin{aligned}
+|f_n(x) - f(x)| &\le |f_n(x) - f_n(x_i)| + |f_n(x_i) - f(x_i)| + |f(x_i) - f(x)| \\
+&\le |f_n(x_{i-1}) - f_n(x_i)| + \frac{\varepsilon}{3} + \frac{\varepsilon}{3}.
+\end{aligned}
+\]
+
+By the uniform continuity of \(f\), since \(|x_i - x_{i-1}| \le \delta\), we have \(|f(x_i) - f(x_{i-1})| < \frac{\varepsilon}{3}\). Moreover, for \(n \ge N\), 
+\[
+|f_n(x_i) - f(x_i)| < \frac{\varepsilon}{3} \quad \text{and} \quad |f_n(x_{i-1}) - f(x_{i-1})| < \frac{\varepsilon}{3}.
+\]
+Hence,
+\[
+\begin{aligned}
+|f_n(x_{i-1}) - f_n(x_i)| &\le |f_n(x_{i-1}) - f(x_{i-1})| + |f(x_{i-1}) - f(x_i)| + |f(x_i) - f_n(x_i)| \\
+&< \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon.
+\end{aligned}
+\]
+
+Therefore,
+\[
+|f_n(x) - f(x)| < \varepsilon + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \frac{5\varepsilon}{3}.
+\]
+
+Since \(\varepsilon > 0\) was arbitrary, we can replace \(\varepsilon\) with \(\frac{3\varepsilon}{5}\) in the initial choices of \(\delta\) and \(N\). Doing so yields \(|f_n(x)-f(x)| < \varepsilon\) for all \(n \ge N\) and all \(x \in [a,b]\).
+
+$\therefore$ The convergence is uniform on \([a,b]\).
+\hfill $\Box$
+
+\newpage
+
+\noindent \textbf{Exercise 6.5.4a}
+
+Assume \( f(x) = \sum_{n=0}^\infty a_n x^n \) converges on \((-R,R)\); show that \( F(x) = \sum_{n=0}^\infty \frac{a_n}{n+1} x^{n+1} \) is defined on \((-R,R)\) and satisfies \( F'(x) = f(x) \).
+
+\noindent\textbf{Proof.}
+
+Suppose \(f(x)=\sum_{n=0}^{\infty}a_nx^n\) has radius of convergence \(R>0\). Define
+\[
+F(x)=\sum_{n=0}^{\infty}\frac{a_n}{n+1}x^{n+1},\qquad x\in(-R,R).
+\]
+We show that \(F\) is well-defined on \((-R,R)\) and that \(F'(x)=f(x)\) for every \(x\in(-R,R)\).
+
+Let \(x\in(-R,R)\) be arbitrary. Choose \(r\) such that \(|x|<r<R\). Since the original series converges at \(x=r\) (because \(|r|<R\)), Theorem 6.5.1 implies that the series converges absolutely for all \(x\) with \(|x|<r\). In particular, \(\sum_{n=0}^{\infty}|a_n|\,|x|^n\) converges.
+
+For the series defining \(F\), we have:
+\[
+\sum_{n=0}^{\infty}\left|\frac{a_n}{n+1}x^{n+1}\right|
+= |x|\sum_{n=0}^{\infty}|a_n|\,|x|^n\cdot\frac{1}{n+1}
+\le |x|\sum_{n=0}^{\infty}|a_n|\,|x|^n.
+\]
+Since the right-hand side converges, the comparison test yields the absolute convergence of the series for \(F\) at \(x\). Hence \(F(x)\) is defined for every \(x\in(-R,R)\).
+
+To differentiate \(F\), write \(F\) as a standard power series:
+\[
+F(x)=\sum_{n=0}^{\infty}\frac{a_n}{n+1}x^{n+1}=\sum_{m=1}^{\infty}\frac{a_{m-1}}{m}x^m.
+\]
+The radius of convergence of this series is also \(R\), as the coefficients satisfy:
+\[
+\limsup_{m\to\infty} \left| \frac{a_{m-1}}{m} \right|^{1/m} = \frac{1}{R}.
+\]
+By the theorem on termwise differentiation of power series, for every \(x\in(-R,R)\),
+\[
+F'(x)=\sum_{m=1}^{\infty}a_{m-1}x^{m-1}=\sum_{n=0}^{\infty}a_nx^n=f(x).
+\]
+
+$\therefore$ \(F\) is differentiable on \((-R,R)\) and \(F'=f\). 
+
+\hfill\(\Box\)
+
+\newpage
+
+\noindent \textbf{Exercise 7.2.5}
+
+Assume that, for each $n$, $f_n$ is integrable on $[a,b]$. If $f_n \to f$ uniformly on $[a,b]$, prove that $f$ is also integrable on $[a,b]$.
+
+\noindent\textbf{Proof.}
+
+Assume that, for each \(n\), \(f_n\) is an integrable function on \([a,b]\). If \((f_n)\) converges uniformly to a function \(f\) on \([a,b]\), we prove that \(f\) is also integrable on \([a,b]\).
+
+We first show that \(f\) is bounded on \([a,b]\). Because each \(f_n\) is integrable, it is bounded. Set \(M_n = \sup_{x\in[a,b]}|f_n(x)|\). Uniform convergence implies there exists \(N\) such that for all \(x\in[a,b]\), \(|f_N(x)-f(x)|<1\). Hence for every \(x\),
+\[
+|f(x)| \le |f_N(x)|+1 \le M_N+1,
+\]
+so \(f\) is bounded. Consequently, for any partition \(P\), the suprema and infima of \(f\) on subintervals are finite real numbers.
+
+Now let \(\varepsilon>0\) be arbitrary. Choose \(\delta = \frac{\varepsilon}{3(b-a)}\). By uniform convergence, there exists \(K\) such that for all \(n\ge K\) and all \(x\in[a,b]\),
+\[
+|f_n(x)-f(x)|<\delta.
+\]
+Fix an index \(n\ge K\). Since \(f_n\) is integrable, there exists a partition \(P=\{x_0,x_1,\dots,x_m\}\) of \([a,b]\) such that
+\[
+U(f_n,P)-L(f_n,P)<\frac{\varepsilon}{3}.
+\]
+For each subinterval \([x_{k-1},x_k]\), define
+\[
+M_k = \sup_{x\in[x_{k-1},x_k]} f(x),\quad m_k = \inf_{x\in[x_{k-1},x_k]} f(x),
+\]
+and similarly \(M_k^{(n)}, m_k^{(n)}\) for \(f_n\). From the uniform bound \(|f_n(x)-f(x)|<\delta\) we obtain
+\[
+f(x) \le f_n(x)+\delta \quad\text{and}\quad f_n(x)-\delta \le f(x)
+\]
+for all \(x\) in the subinterval. Taking suprema and infima yields
+\[
+M_k \le M_k^{(n)}+\delta,\qquad m_k \ge m_k^{(n)}-\delta.
+\]
+Therefore
+\[
+M_k - m_k \le \bigl(M_k^{(n)}-m_k^{(n)}\bigr) + 2\delta.
+\]
+Multiplying by \(\Delta x_k = x_k-x_{k-1}\) and summing over \(k=1,\dots,m\) gives
+\[
+U(f,P)-L(f,P) = \sum_{k=1}^m (M_k-m_k)\Delta x_k
+\le \sum_{k=1}^m \bigl(M_k^{(n)}-m_k^{(n)}\bigr)\Delta x_k + 2\delta\sum_{k=1}^m\Delta x_k.
+\]
+But \(\sum_{k=1}^m\Delta x_k = b-a\), and the first sum is precisely \(U(f_n,P)-L(f_n,P)\). Hence
+\[
+U(f,P)-L(f,P) \le \bigl(U(f_n,P)-L(f_n,P)\bigr) + 2\delta(b-a).
+\]
+Substituting the bounds,
+\[
+U(f,P)-L(f,P) < \frac{\varepsilon}{3} + 2\cdot\frac{\varepsilon}{3(b-a)}\cdot(b-a) = \frac{\varepsilon}{3}+\frac{2\varepsilon}{3}=\varepsilon.
+\]
+Thus for every \(\varepsilon>0\) there exists a partition \(P\) with \(U(f,P)-L(f,P)<\varepsilon\). By the Riemann integrability criterion (Theorem 7.2.8), \(f\) is integrable on \([a,b]\). 
+
+\hfill\(\Box\)
+
+\end{document}

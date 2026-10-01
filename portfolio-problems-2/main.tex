@@ -1,0 +1,226 @@
+\documentclass[reqno,11pt]{amsart}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{enumerate}
+\usepackage{fullpage}
+\usepackage[usenames,dvipsnames]{color}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+\begin{document}
+\begin{flushright} (Robert Kohn) \end{flushright}
+\begin{flushright} (3/27/26)\end{flushright}
+\vspace{0.2in}
+\begin{center}
+{\bf Portfolio Problems for Test 2}
+\vspace{0.2in}
+\end{center}
+
+\noindent\textbf{Exercise 2.7.1c}  
+\textit{(c) Consider the subsequences \( (s_{2n}) \) and \( (s_{2n+1}) \), and show how the Monotone Convergence Theorem leads to a third proof for the Alternating Series Test.}
+\medskip
+
+\noindent\textbf{Proof.}
+Let \((a_n)\) be a decreasing sequence of positive real numbers with \(a_n \to 0\).
+Consider the two subsequences:
+\[
+s_{2n} = \sum_{k=1}^{2n} (-1)^{k+1} a_k = a_1 - a_2 + a_3 - \cdots - a_{2n}
+\]
+\[
+s_{2n+1} = \sum_{k=1}^{2n+1} (-1)^{k+1} a_k = a_1 - a_2 + a_3 - \cdots + a_{2n+1}
+\]
+
+Note that \( s_{2(n+1)} - s_{2n} = a_{2n+1} - a_{2n+2} \ge 0 \), since \(a_n\) is decreasing. Hence \( (s_{2n}) \) is increasing.
+
+Similarly, \( s_{2n+1} - s_{2(n+1)+1} = a_{2n+2} - a_{2n+3} \ge 0 \), so \( (s_{2n+1}) \) is decreasing.
+
+Also, \( s_{2n+1} - s_{2n} = a_{2n+1} \ge 0 \), so \( s_{2n} \le s_{2n+1} \). Since \( a_n \to 0 \), we also have \( a_{2n+1} \to 0 \), so this difference goes to 0.
+
+Since \( (s_{2n}) \) is increasing, and since \( s_{2n} \le s_{2n+1} \le s_1 \), it is bounded above. Similarly, \( (s_{2n+1}) \) is decreasing and bounded below by \( s_2 \).
+
+By the Monotone Convergence Theorem, both \( (s_{2n}) \) and \( (s_{2n+1}) \) converge.
+
+Let \( \lim s_{2n} = L \) and \( \lim s_{2n+1} = M \). Since \( s_{2n+1} - s_{2n} = a_{2n+1} \to 0 \), it follows that \( M - L = 0 \), so \( L = M \).
+
+Because both the even and odd subsequences converge to the same limit \( L \), the full sequence \( (s_n) \) converges to \( L \).
+
+\(\therefore \sum_{n=1}^{\infty} (-1)^{n+1} a_n\) converges.
+
+\hfill$\Box$
+
+\newpage
+
+\noindent\textbf{Exercise 3.3.9}  
+\textit{(c) Because \( x \in K \), there must exist an open set \( O_{\lambda_0} \) from the original collection that contains \( x \) as an element. Explain how this leads to the desired contradiction.}
+\medskip
+
+\noindent\textbf{Proof.}
+
+Suppose, for contradiction, that \(K\) is not compact.
+
+Since \(x \in K\) and \(\{O_\lambda\}_{\lambda \in \Lambda}\) covers \(K\), there is some \(\lambda_0\) such that \(x \in O_{\lambda_0}\).
+
+Because \(O_{\lambda_0}\) is open and contains \(x\), there exists \(\varepsilon > 0\) such that \((x - \varepsilon, x + \varepsilon) \subseteq O_{\lambda_0}\).
+
+As \(|I_n| \to 0\) by part (a), we can choose \(N\) so that for all \(n \ge N\), \(|I_n| < \varepsilon\).
+
+If we write \(I_n = [a_n, b_n]\), then since \(x \in I_n\) and \(b_n - a_n = |I_n| < \varepsilon\), we have
+\[
+a_n > x - \varepsilon \quad \text{and} \quad b_n < x + \varepsilon.
+\]
+
+Then \(I_n \subseteq (x - \varepsilon, x + \varepsilon)\) for all \(n \ge N\).
+
+Thus \(I_n \subseteq O_{\lambda_0}\) for all \(n \ge N\), so \(I_n \cap K \subseteq O_{\lambda_0}\). In particular, \(I_n \cap K\) is covered by just one open set.
+
+This contradicts part (a), which says \(K \cap I_n\) has no finite subcover from \(\{O_\lambda\}_{\lambda \in \Lambda}\).
+
+Therefore, our initial assumption that \(K\) is not compact leads to a contradiction. Hence every open cover of \(K\) has a finite subcover, and \(K\) is compact.
+
+$\therefore$ \(K\) is compact.
+
+\hfill$\Box$
+
+\newpage
+
+\noindent\textbf{Exercise 4.2.3}  
+\textit{(c) Conjecture and verify $\lim_{x \to 1} t(x)$}
+\medskip
+
+\noindent\textbf{Proof.}
+
+We conjecture
+\[
+\lim_{x \to 1} t(x) = 0.
+\]
+
+Let \(\varepsilon > 0\). Suppose \(t(x) \geq \varepsilon\). Writing \(x = \frac{m}{n}\) in lowest terms (with \(n \in \mathbb{N}\)), we have
+\[
+t(x) = \frac{1}{n} \geq \varepsilon \quad \Rightarrow \quad n \leq \frac{1}{\varepsilon}.
+\]
+
+Thus, if \(t(x) \geq \varepsilon\), the denominator \(n\) is bounded above by \(\frac{1}{\varepsilon}\).  
+Consider only those \(x\) in the interval \((0,2)\). For each such \(n\), there are only finitely many rational numbers \(\frac{m}{n}\) in \((0,2)\) with this denominator. Hence the set
+\[
+E_\varepsilon = \{x \in (0,2) : t(x) \geq \varepsilon\}
+\]
+is finite. (Note: \(1 \in E_\varepsilon\) because \(t(1)=1 \geq \varepsilon\) for any \(\varepsilon \leq 1\); for \(\varepsilon >1\) the set is empty.)
+
+If \(\varepsilon > 1\), then \(E_\varepsilon\) is empty, and the conclusion follows trivially. So we may assume \(0 < \varepsilon \le 1\); in this case \(E_\varepsilon\) is finite and contains \(1\).
+
+Since \(E_\varepsilon\) is finite, let
+\[
+\delta = \min\{1,\; |1 - y| : y \in E_\varepsilon,\ y \neq 1\}.
+\]
+If \(E_\varepsilon = \{1\}\), simply take \(\delta = 1\). Then \(\delta > 0\) and by construction, if \(0 < |x-1| < \delta\), we have \(x \notin E_\varepsilon\) and \(x \in (0,2)\).
+
+For any such \(x\):
+\begin{itemize}
+    \item If \(x\) is irrational, then \(t(x)=0<\varepsilon\).
+    \item If \(x\) is rational, write \(x = \frac{m}{n}\) in lowest terms. Then \(x \in (0,2)\) and \(x \notin E_\varepsilon\) implies \(t(x) < \varepsilon\).
+\end{itemize}
+Thus \(t(x) < \varepsilon\) whenever \(0 < |x-1| < \delta\).
+
+$\therefore \lim_{x \to 1} t(x) = 0.$
+
+\hfill$\Box$
+
+\newpage
+
+\noindent\textbf{Exercise 4.5.3.}  
+\textit{A function $f$ is increasing on $A$ if $f(x) \leq f(y)$ for all $x < y$ in $A$. Show that if $f$ is increasing on $[a,b]$ and satisfies the Intermediate Value Property (Definition 4.5.3), then $f$ is continuous on $[a,b]$.} 
+\medskip
+
+\noindent\textbf{Proof.}
+
+Let \(c \in [a,b]\). We show \(f\) is continuous at \(c\).
+
+\medskip
+\noindent\textbf{Case 1: \(f(a) < f(c) < f(b)\).}
+
+Let \(\varepsilon > 0\). Without loss of generality, assume
+\[
+\varepsilon < \min\{f(c) - f(a), f(b) - f(c)\}.
+\]
+Since any $\varepsilon>0$ can be reduced to satisfy this bound, proving continuity for such $\varepsilon$ is sufficient. Then,
+\[
+f(c) - \frac{\varepsilon}{2} > f(a) \quad \text{and} \quad f(c) + \frac{\varepsilon}{2} < f(b).
+\]
+
+Since \(f\) satisfies the Intermediate Value Property, there exist
+\[
+c_1 \in (a,c) \quad \text{with} \quad f(c_1) = f(c) - \frac{\varepsilon}{2}
+\]
+and
+\[
+c_2 \in (c,b) \quad \text{with} \quad f(c_2) = f(c) + \frac{\varepsilon}{2}.
+\]
+
+Because \(f\) is increasing, for any \(x\) with \(c_1 < x < c_2\) we have
+\[
+f(c_1) \le f(x) \le f(c_2).
+\]
+Thus
+\[
+f(c) - \frac{\varepsilon}{2} \le f(x) \le f(c) + \frac{\varepsilon}{2},
+\]
+so \(|f(x) - f(c)| \le \frac{\varepsilon}{2} < \varepsilon\).
+
+Now set \(\delta = \min\{c - c_1, c_2 - c\}\). If \(|x - c| < \delta\), then \(c_1 < x < c_2\), and therefore \(|f(x) - f(c)| < \varepsilon\). Hence \(f\) is continuous at \(c\).
+
+\medskip
+\noindent\textbf{Case 2: \(f(c) = f(a)\).}
+
+Let \(\varepsilon > 0\).
+
+If \(f(b) = f(c)\), monotonicity implies \(f\) is constant on \([c,b]\), so \(|f(x)-f(c)| = 0\) for \(x \ge c\). For \(x \le c\), we will show below that \(f(x) = f(c)\). Thus \(f\) is continuous at \(c\) in this subcase. So assume \(f(b) > f(c)\).
+
+Let \(\varepsilon' = \min\{\varepsilon,\; 2(f(b)-f(c))\}\). Then \(\varepsilon'>0\) and \(f(c)+\varepsilon'/2 \le f(b)\). By the Intermediate Value Property on \([c,b]\), there exists \(c_2 \in (c,b)\) with
+\[
+f(c_2) = f(c) + \frac{\varepsilon'}{2}.
+\]
+
+For any \(x \in (c, c_2)\), monotonicity gives \(f(c) \le f(x) \le f(c_2)\), so
+\[
+|f(x) - f(c)| \le \frac{\varepsilon'}{2} < \varepsilon'.
+\]
+
+For \(x \in [a,c)\), monotonicity gives \(f(x) \le f(c)\). Since \(f(c) = f(a)\), we actually have
+\[
+f(a) \le f(x) \le f(c) = f(a),
+\]
+which makes \(f(x) = f(a) = f(c)\). Hence \(f\) is constant on \([a,c]\), and \(|f(x)-f(c)| = 0 < \varepsilon\) for all \(x \in [a,c]\).
+
+Set \(\delta = c_2 - c\). If \(|x - c| < \delta\) and \(x \ge c\), then \(x \in (c, c_2)\) and \(|f(x)-f(c)| < \varepsilon\). If \(x \le c\), then \(f(x) = f(c)\), so \(|f(x)-f(c)| = 0 < \varepsilon\). Thus \(f\) is continuous at \(c\).
+
+\medskip
+\noindent\textbf{Case 3: \(f(c) = f(b)\).}
+
+Let \(\varepsilon > 0\).
+
+If \(f(a) = f(c)\), then \(f\) is constant on \([a,c]\) by monotonicity, so \(|f(x)-f(c)| = 0\) for \(x \le c\). For \(x \ge c\), we will show \(f(x) = f(c)\). Hence continuity holds in this subcase. So assume \(f(a) < f(c)\).
+
+The argument is symmetric to Case 2. Let \(\varepsilon' = \min\{\varepsilon,\; 2(f(c)-f(a))\}\). Then \(\varepsilon'>0\) and \(f(c)-\varepsilon'/2 \ge f(a)\). By the Intermediate Value Property on \([a,c]\), there exists \(c_1 \in (a,c)\) with
+\[
+f(c_1) = f(c) - \frac{\varepsilon'}{2}.
+\]
+
+For any \(x \in (c_1, c)\), monotonicity gives \(f(c_1) \le f(x) \le f(c)\), so
+\[
+|f(x) - f(c)| \le \frac{\varepsilon'}{2} < \varepsilon'.
+\]
+
+For any \(x \in (c,b]\), since \(f\) is increasing, \(f(c) \le f(x) \le f(b) = f(c)\), so \(f(x) = f(c)\). Thus \(|f(x) - f(c)| = 0 < \varepsilon\) for all \(x \in [c,b]\).
+
+Take \(\delta = c - c_1\). If \(|x - c| < \delta\) and \(x \le c\), then \(x \in (c_1, c)\) and \(|f(x)-f(c)| < \varepsilon\). If \(x \ge c\), then \(x \in [c,b]\) and \(f(x) = f(c)\), so \(|f(x)-f(c)| = 0 < \varepsilon\). Hence \(f\) is continuous at \(c\).
+
+$\therefore$ Since \(c \in [a,b]\) was arbitrary, \(f\) is continuous on \([a,b]\).
+
+\hfill$\Box$
+
+\end{document}

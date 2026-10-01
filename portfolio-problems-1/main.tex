@@ -1,0 +1,126 @@
+\documentclass[reqno,11pt]{amsart}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{enumerate}
+\usepackage{fullpage}
+\usepackage[usenames,dvipsnames]{color}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+\begin{document}
+\begin{flushright} (Robert Kohn) \end{flushright}
+\begin{flushright} (2/12/26)\end{flushright}
+\vspace{0.2in}
+\begin{center}
+{\bf Portfolio Problems for Test 1}
+\vspace{0.2in}
+\end{center}
+
+\noindent\textbf{Exercise 1.3.3.}  
+\textit{(a) Let \( A \) be nonempty and bounded below, and define}
+\[
+B = \{ b \in \mathbb{R} : b \text{ is a lower bound for } A \}.
+\]
+\textit{Show that \( \sup B = \inf A \).}
+\medskip
+
+\noindent\textbf{Proof.}
+Let \( B = \{ b : b \text{ is a lower bound of } A \} \).  
+Since \( A \) is nonempty and bounded below, \( B \) is nonempty, and any element of \( A \) is an upper bound for \( B \).  
+
+By the Axiom of Completeness, \( s = \sup B \).
+
+We show \( s \) is the greatest lower bound of \( A \).
+
+First, \( s \) is a lower bound for \( A \).  
+Suppose, for contradiction, that \( s \) is not a lower bound of \( A \).  
+Then there exists \( a \in A \) with \( a < s \).  
+Set \( \varepsilon = s - a > 0 \).  
+
+By the approximation property of the supremum (Lemma 1.3.8), there exists \( b \in B \) such that \( s - \varepsilon < b \le s \).  
+But \( s - \varepsilon = s - (s - a) = a \), so we have \( a < b \le s \).  
+
+Since \( b \in B \), \( b \) is a lower bound of \( A \). Yet \( a \in A \) satisfies \( a < b \), contradicting the fact that \( b \) is a lower bound of \( A \).  
+Hence \( s \) must be a lower bound of \( A \).
+
+Second, \( s \) is the greatest lower bound.  
+Let \( \ell \) be any lower bound of \( A \). Then \( \ell \in B \), and because \( s = \sup B \), we have \( \ell \le s \).  
+Thus \( s \) is greater than or equal to every lower bound of \( A \), so $s=\inf A$.
+
+$\therefore \; \sup B = \inf A$.
+
+\newpage
+
+\noindent\textbf{Exercise 1.4.7.}
+\textit{Finish the proof of the theorem by showing that the assumption $\alpha^2 > 2$ leads to a contradiction of the fact that $\alpha = \sup T$.}
+\medskip
+
+\noindent\textbf{Proof.}
+Let \(T = \{ t \in \mathbb{R} : t^2 < 2 \}\) and let \(\alpha > 0\) satisfy \(\alpha^2 > 2\).  
+Observe that for any positive integer \(n\),
+\[
+\left( \alpha - \frac{1}{n} \right)^2 = \alpha^2 - \frac{2\alpha}{n} + \frac{1}{n^2} > \alpha^2 - \frac{2\alpha}{n}.
+\]
+
+Choose $n \in \mathbb{N}$ such that:
+\[
+\frac{1}{n} < \frac{\alpha^2 - 2}{2\alpha}.
+\]
+Then
+\[
+\alpha^2 - \frac{2\alpha}{n} > \alpha^2 - (\alpha^2 - 2) = 2,
+\]
+and consequently
+\[
+\left( \alpha - \frac{1}{n} \right)^2 > 2.
+\]
+
+We now show that \(\alpha - \frac{1}{n}\) is an upper bound for \(T\).  
+Take any \(b \in T\), so \(b^2 < 2\). Because \((\alpha - \frac{1}{n})^2 > 2 > b^2\) and both \(\alpha - \frac{1}{n} > 0\) and \(b^2 < 2 < (\alpha - \frac{1}{n})^2\), the inequality \(x^2 > y^2\) for positive \(x, y\) implies \(x > y\).  
+Thus if \(b \ge 0\), we have \(\alpha - \frac{1}{n} > b\).  
+If \(b < 0\), then trivially \(b < 0 < \alpha - \frac{1}{n}\).  
+Hence in all cases \(b \le \alpha - \frac{1}{n}\).
+
+Since \(\alpha - \frac{1}{n}\) is an upper bound for \(T\), \(\alpha\) cannot be the least upper bound of \(T\).
+
+$\therefore$ If \(\alpha > 0\) and \(\alpha^2 > 2\), then \(\alpha \neq \sup T\).
+
+\newpage
+
+\noindent\textbf{Exercise 2.5.7.}  
+\textit{Extend the result of Example 2.5.3 by proving that the sequence $(b^n)$ converges to $0$ if and only if $-1 < b < 1$.}
+\medskip
+
+\noindent\textbf{Proof.}
+We prove the equivalence in two directions.
+
+\noindent\underline{($\Rightarrow$)} Assume $\displaystyle\lim_{n\to\infty} b^n = 0$.
+
+If $|b| \ge 1$, then $|b^n| = |b|^n \ge 1$ for all $n$.  
+If a limit $L =\displaystyle\lim_{n\to\infty} b^n$ existed, taking absolute values gives $|L| = \displaystyle\lim_{n\to\infty} |b^n| \ge 1$.  
+Thus, $L \neq 0$, a contradiction.
+
+Hence $|b| < 1$.
+
+\noindent\underline{($\Leftarrow$)} Assume $-1 < b < 1$.
+
+\noindent\textbf{Case 1: $0 \le b < 1$.}  
+Then $(b^n)$ is decreasing and bounded below by $0$, so it converges to some $\ell \ge 0$.  
+Consider the subsequence $b^{2n} = (b^n)^2$. Taking limits in $b^{2n} = (b^n)^2$ yields $\ell = \ell^2$, hence $\ell = 0$ or $\ell = 1$.  
+Since $b^n$ is decreasing and $b < 1$, we cannot have $\ell = 1$. Therefore $b^n \to 0$.
+
+\noindent\textbf{Case 2: $-1 < b < 0$.}  
+Then $|b| \in (0,1)$. By Case 1, $|b|^n \to 0$.  
+Because $-|b|^n \le b^n \le |b|^n$ for all $n$, the Squeeze Theorem yields $b^n \to 0$.
+
+\noindent\textbf{Case 3: $b = 0$} is trivial.
+
+\medskip
+$\therefore \; \displaystyle\lim_{n\to\infty} b^n = 0 \quad \text{if and only if} \quad -1 < b < 1.$
+
+\end{document}
